@@ -1,0 +1,23 @@
+#######################################
+# ?? ??
+#######################################
+server:
+  port: 0
+
+spring:
+  profiles:
+    active: local
+
+  messages:
+    basename: i18n/messages
+    cache-duration: -1
+  session:
+    timeout: 24h
+
+jwt:
+  access-token:
+    expiration_time: 1800000    # 30?
+    secret: access_token
+  refresh-token:
+    expiration_time: 86400000   # 24??
+    secret: refresh_token

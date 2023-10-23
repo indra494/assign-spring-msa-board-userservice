@@ -1,0 +1,42 @@
+#######################################
+# 로컬 설정
+#######################################
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/userdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    show-sql: true
+    //generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      //ddl-auto: create
+    database: postgresql
+    properties:
+      format_sql: true
+
+  redis:
+    host: localhost
+    port: 6379
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8700/eureka
+
+logging:
+  level:
+    com.indra.userservice: DEBUG
